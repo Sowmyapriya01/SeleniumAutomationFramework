@@ -1,10 +1,15 @@
 package com.ui.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import com.constants.Browser;
+import com.constants.Env;
+
+import static com.constants.Env.*;
 import com.utility.BrowserUtility;
+import static com.utility.PropertyUtil.*;
+import com.utility.JSONUtility;
+
 
 public class HomePage extends BrowserUtility{
 
@@ -12,7 +17,8 @@ public class HomePage extends BrowserUtility{
 	
 	public HomePage(Browser browserName) {
 		super(browserName);
-		goToWebsite("http://www.automationpractice.pl/index.php");
+//		goToWebsite(readProperty(QA,"URL"));
+		goToWebsite(JSONUtility.readJSON(Env.QA).getUrl());
 		maximizeWindow();
 	}
 	public LoginPage goToLoginPage() {
